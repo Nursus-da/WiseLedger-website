@@ -1,0 +1,120 @@
+ /* Pengaturan Dasar & Font */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            /* Latar belakang gradient kebiruan seperti pada gambar */
+            background: linear-gradient(135deg, #aec5e1 0%, #ffffff 40%, #ffffff 100%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigasi / Header */
+        .navbar {
+            padding: 2rem 5%;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .logo-highlight {
+            color: #dca73a; /* Warna kuning/emas pada logo */
+        }
+
+        /* Tombol */
+        .btn-custom-outline {
+            border: 1px solid #333;
+            color: #333;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+        
+        .btn-custom-outline:hover {
+            background-color: #f8f9fa;
+        }
+
+        .btn-custom-solid {
+            background-color: #1a3a70; /* Warna biru gelap */
+            color: #fff;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #1a3a70;
+        }
+
+        .btn-custom-solid:hover {
+            background-color: #122952;
+            color: #fff;
+        }
+
+        /* Area Konten Utama */
+        .hero-section {
+            flex: 1; /* Membuat area ini mengisi sisa ruang di tengah */
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-brand {
+            color: #dca73a; /* Warna teks WiseLedger */
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        /* Area Gambar / Maskot */
+        .hero-image-container {
+            position: relative;
+            text-align: center;
+        }
+
+        /* Lingkaran biru di belakang maskot */
+        .hero-image-bg {
+            background-color: #2b578c;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Footer Bawah */
+        .footer-bar {
+            background: linear-gradient(90deg, #0e1e38 0%, #1a3a70 100%);
+            height: 60px;
+            width: 100%;
+        }
+
+        /* Penyesuaian Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-image-bg { width: 300px; height: 300px; }
+            .hero-section { padding: 3rem 0; }
+        }

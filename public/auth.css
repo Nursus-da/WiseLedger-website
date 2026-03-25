@@ -1,0 +1,212 @@
+/* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Background image diatur di sini. Karena saya tidak memiliki gambar aslinya, 
+               saya menggunakan gradient biru gelap yang menyerupai tema aslinya */
+            background: linear-gradient(135deg, rgba(12, 45, 115, 0.9) 0%, rgba(15, 110, 190, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            color: #333;
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            width: 100%;
+            padding: 40px;
+            gap: 40px;
+        }
+
+        /* Left Panel - Typography & Info */
+        .left-panel {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            padding: 20px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .back-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .hero-text h1 {
+            font-size: 38px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Right Panel - Form Container */
+        .right-panel {
+            flex: 0.8;
+            background-color: white;
+            border-radius: 12px;
+            padding: 50px;
+            max-width: 550px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d4c4a8; /* Warna border sedikit keemasan sesuai gambar */
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #a88b4a;
+        }
+
+        .form-group input::placeholder {
+            color: #b5b5b5;
+        }
+
+        .password-hint {
+            display: block;
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        /* Buttons */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            /* Gradient biru dongker ke emas sesuai screenshot */
+            background: linear-gradient(90deg, #0d1b2a 0%, #1b263b 60%, #b8974a 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: opacity 0.3s;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            color: #aaa;
+            font-size: 13px;
+            position: relative;
+        }
+
+        .btn-google {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn-google:hover {
+            background: #f5f5f5;
+        }
+
+        .btn-google svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .login-link a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        /* Responsiveness untuk layar kecil (Mobile) */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .right-panel {
+                max-width: 100%;
+                padding: 30px;
+            }
+            .hero-text h1 {
+                font-size: 28px;
+            }
+        }

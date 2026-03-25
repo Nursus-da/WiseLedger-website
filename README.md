@@ -5,15 +5,16 @@ Proyek ini berfokus pada pengembangan web application manajemen keuangan berbasi
 ## Struktur file
 
 - `index.html` - Halaman utama landing website.
-- `package.json` - Konfigurasi npm dan skrip Vite.
-- `vite.config.js` - Konfigurasi bundler Vite.
-- `src/style.css` - Styling landing page.
-- `src/main.js` - Interaksi UI & panggilan API mock.
-- `src/mock-api.js` - Mock RESTful API menggunakan `localStorage` (tanpa database).
+- `package.json` - Konfigurasi npm dan dependencies.
+- `config.js/` - konfigurasi database.
+- `controllers` - Kontrol App
+- `public/` - Styling.
+- `views/` - HTML.
+- `app.js` - server.
 
 ## Menjalankan
 
 1. `npm install`
-2. `npm run dev`
-3. Buka `http://localhost:5173`
+2. `npm run start`
+3. Buka `http://localhost:3000`
 
