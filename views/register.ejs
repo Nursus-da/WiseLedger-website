@@ -24,21 +24,21 @@
         <div class="right-panel">
             <h2 class="form-title">Sign up a WiseLedger account</h2>
             
-            <form action="#" method="POST">
+            <form action="/register" method="POST">
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
-                    <input type="text" id="fullname" placeholder="Full Name" required>
+                    <input type="text" name="username" placeholder="Full Name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Email Address" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter new password" required>
-                    <span class="password-hint">Use at least 8 characters with a combination of letters and numbers</span>
+                    <input type="password" name="password" placeholder="Enter new password" required>
+                    <span class="password-hint">Use at least 6 characters with a combination of letters and numbers</span>
                 </div>
 
                 <button type="submit" class="btn-submit">Sign up</button>
