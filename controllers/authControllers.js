@@ -32,9 +32,7 @@ class Authentication {
 
     static async login(req,res) {
         const body = req.body;
-
-        if (!body.email) return res.status(400).json({message: "email harus diisi"});
-        if (!body.password) return res.status(400).json({message: "password harus diisi"});
+        if (!body.email || !body.password) return res.status(400).json({message: "email dan password harus diisi"});
 
         const user = await User.findOne({
             where: {

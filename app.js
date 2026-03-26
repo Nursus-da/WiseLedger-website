@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const Authentication = require('./controllers/authControllers');
 require('dotenv').config();
+const auth = require('./midlewares/auth');
 
 // view engine = ejs
 app.set('view engine', 'ejs');
@@ -30,6 +31,13 @@ app.post('/register', Authentication.register)
 
 app.get('/beranda', (req, res) => {
     res.render('beranda');
+});
+
+app.get('/beranda/auth', auth, (req, res) => {
+    res.json({
+        success: true,
+        user: req.user
+    });
 });
 
 app.listen(port, () => {
