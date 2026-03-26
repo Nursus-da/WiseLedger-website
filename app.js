@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const Authentication = require('./controllers/authControllers');
+require('dotenv').config();
 
 // view engine = ejs
 app.set('view engine', 'ejs');
@@ -18,6 +19,8 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login');
 });
+
+app.post('/login', Authentication.login);
 
 app.get('/register', (req, res) => {
     res.render('register');

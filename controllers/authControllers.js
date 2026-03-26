@@ -1,5 +1,6 @@
 const { User } = require('../models');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 class Authentication {
 
@@ -27,6 +28,29 @@ class Authentication {
             });
 
         return res.status(201).redirect('login');
+    }
+
+    static async login(req,res) {
+        const body = req.body;
+
+        if (!body.email) return res.status(400).json({message: "email harus diisi"});
+        if (!body.password) return res.status(400).json({message: "password harus diisi"});
+
+        const user = await User.findOne({
+            where: {
+                email: body.email
+            }
+        });
+
+        if (!user) return res.status(401).json({message: "email belum terdaftar, silahkan daftar terlebih dahulu"});
+
+        const Invalid = await bcrypt.compare(body.password, user.password);
+
+        if (!Invalid) return res.status(401).json({message: "email atau password salah"});
+
+        const token = jwt.sign({ id: user.id, email: user.email }, 'inisangat@@rahasia');
+
+        return res.status(200).json({message: "berhasil login", token: token});
     }
 }
 
