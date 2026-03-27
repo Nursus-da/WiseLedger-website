@@ -1,54 +1,314 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WiseLedger Landing Page</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
 
-    <header class="navbar d-flex justify-content-between align-items-center">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Library AOS-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="hero-page">
+      <header class="hero-header">
         <a href="#" class="logo-text">
-            <span class="logo-highlight">LO</span>GO
+          <span class="logo-highlight">LO</span>GO
         </a>
         <div>
-            <a href="login" class="btn btn-custom-outline">Sign in</a>
-            <a href="register" class="btn btn-custom-solid">Sign up</a>
+          <a href="login" class="btn-custom-outline">Sign in</a>
+          <a href="register" class="btn-custom-solid">Sign up</a>
         </div>
-    </header>
+      </header>
 
-    <main class="container hero-section">
+      <main class="container hero-section">
         <div class="row align-items-center w-100">
-            
-            <div class="col-lg-6 col-md-12 mb-5 mb-lg-0">
-                <h1 class="hero-title">
-                    Manage Your<br>
-                    Money Smarter<br>
-                    with <span class="text-brand">WiseLedger</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Plan your monthly budget, track daily expenses, and reflect on your spending habits in one simple platform designed for smarter financial decisions.
-                </p>
-            </div>
+          <div class="col-lg-6 col-md-12 mb-5 mb-lg-0">
+            <h1 class="hero-title">
+              Manage Your<br />
+              Money Smarter<br />
+              with <span class="text-brand">WiseLedger</span>
+            </h1>
+            <p class="hero-subtitle" >
+              Plan your monthly budget, track daily expenses, and reflect on
+              your spending habits in one simple platform designed for smarter
+              financial decisions.
+            </p>
+          </div>
 
-            <div class="col-lg-6 col-md-12">
-                <div class="hero-image-container">
-                    <div class="hero-image-bg"></div>
-                    <img src="https://dummyimage.com/300x350/transparent/fff.png&text=Letakkan+Gambar+Mascot+Di+Sini" alt="WiseLedger Mascot" class="hero-image">
-                </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="hero-image-container">
+              <div class="hero-image-bg"></div>
+              <img
+                src="/image/Mascott2x.png"
+                alt="WiseLedger Mascot"
+                class="hero-image"
+              />
             </div>
-
+          </div>
         </div>
-    </main>
+      </main>
+      <footer class="footer-bar"></footer>
+    </div>
 
-    <footer class="footer-bar"></footer>
+    <!--Navbar-->
+    <nav id="sticky-nav" data-aos="fade-up" data-aos-duration="1000">
+      <a class="nav-logo" href="#">
+        <div class="logo-mark">
+          <svg
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="3" y="1" width="11" height="16" rx="2" fill="#D4A437" />
+            <rect
+              x="5"
+              y="4"
+              width="7"
+              height="1.5"
+              rx="0.75"
+              fill="white"
+              opacity="0.9"
+            />
+            <rect
+              x="5"
+              y="7"
+              width="5"
+              height="1.5"
+              rx="0.75"
+              fill="white"
+              opacity="0.7"
+            />
+            <rect
+              x="5"
+              y="10"
+              width="6"
+              height="1.5"
+              rx="0.75"
+              fill="white"
+              opacity="0.7"
+            />
+          </svg>
+        </div>
+        <span>Wise<em>Ledger</em></span>
+      </a>
 
+      <ul class="nav-links">
+        <li><a href="#hero-page">Home</a></li>
+        <li><a href="#about-section" class="active">About</a></li>
+        <li><a href="#">Lorem</a></li>
+        <li><a href="#">Lorem</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="login" class="btn-outline">Sign In</a>
+        <a href="register" class="btn-solid">Sign Up</a>
+      </div>
+    </nav>
+
+    <!--ABOUT / MISSION SECTION-->
+    <section id="about-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag-pill">Tentang Kami</div>
+          <h2 style="font-family: Arial, Helvetica, sans-serif;">Tiga Layana Utama WiseLedger</h2>
+          <p>
+            Setiap fitur dirancang untuk membangun kebiasaan finansial yang
+            sehat, sadar, dan berkelanjutan.
+          </p>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card reveal" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300">
+            <div class="card-icon">
+              <svg
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="4"
+                  y="2"
+                  width="14"
+                  height="22"
+                  rx="3"
+                  fill="#2F4F7F"
+                  opacity="0.12"
+                />
+                <rect
+                  x="4"
+                  y="2"
+                  width="14"
+                  height="22"
+                  rx="3"
+                  stroke="#2F4F7F"
+                  stroke-width="1.6"
+                />
+                <path
+                  d="M8 8h6M8 12h6M8 16h4"
+                  stroke="#2F4F7F"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+                <circle cx="20" cy="20" r="5" fill="#D4A437" />
+                <path
+                  d="M17.5 20l1.5 1.5 3-3"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3>Financial Discipline</h3>
+            <p>
+              Membantu pengguna membangun disiplin finansial melalui pencatatan
+              rutin yang sederhana dan terstruktur setiap harinya.
+            </p>
+          </div>
+
+          <div class="mission-card" data-aos="fade-down" data-aos-delay="100" data-aos-duration="600">
+            <div class="card-icon">
+              <svg
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="13"
+                  cy="13"
+                  r="10"
+                  stroke="#2F4F7F"
+                  stroke-width="1.6"
+                  fill="none"
+                />
+                <path
+                  d="M13 7v6l4 4"
+                  stroke="#D4A437"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle cx="13" cy="13" r="2" fill="#2F4F7F" />
+                <path
+                  d="M7 4.5C8.8 3.2 11 2.5 13 2.5"
+                  stroke="#D4A437"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3>Kakeibo Reflection</h3>
+            <p>
+              Mengadaptasi metode Kakeibo untuk mendorong refleksi bulanan agar
+              setiap pengeluaran lebih sadar dan terarah.
+            </p>
+          </div>
+
+          <div class="mission-card" data-aos="fade-down" data-aos-delay="100" data-aos-duration="900">
+            <div class="card-icon">
+              <svg
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="5"
+                  y="3"
+                  width="16"
+                  height="20"
+                  rx="3.5"
+                  stroke="#2F4F7F"
+                  stroke-width="1.6"
+                  fill="none"
+                />
+                <rect
+                  x="8"
+                  y="7"
+                  width="10"
+                  height="7"
+                  rx="2"
+                  fill="#2F4F7F"
+                  opacity="0.10"
+                  stroke="#2F4F7F"
+                  stroke-width="1.2"
+                />
+                <circle cx="10" cy="18" r="1.5" fill="#D4A437" />
+                <circle cx="13" cy="18" r="1.5" fill="#2F4F7F" opacity="0.3" />
+                <circle cx="16" cy="18" r="1.5" fill="#2F4F7F" opacity="0.3" />
+                <path
+                  d="M9 10.5h8M9 13h5"
+                  stroke="#2F4F7F"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  opacity="0.5"
+                />
+              </svg>
+            </div>
+            <h3>Static Article</h3>
+            <p>
+              Pelajari strategi menabung dan manajemen bisnis melalui artikel
+              yang dirancang untuk membangun kemandirian finansial Anda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--=========== CTA Section ============= -->
+    <section class="cta-section">
+      <div class="cta-inner">
+        <div
+          class="tag-pill"
+          style="background:  rgba(212,164,55,0.18); color: var(--gold-light)"
+        >
+          Mulai Sekarang
+        </div>
+        <h2 style="font-family: Arial, Helvetica, sans-serif;">Saatnya Mengelola Uang<br />dengan Lebih Sadar</h2>
+        <p>Bukan hanya mencatat, tetapi memahami dan bertumbuh.</p>
+        <a href="register" class="btn-gold">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path
+              d="M9 3v8M5 7l4 4 4-4"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <rect
+              x="2"
+              y="13"
+              width="14"
+              height="2.5"
+              rx="1.25"
+              fill="currentColor"
+              opacity="0.3"
+            />
+          </svg>
+          Coba WiseLedger Gratis
+        </a>
+      </div>
+    </section>
+
+    <!--=================== Footer ================ -->
+    <footer>
+      <p>© 2025 WiseLedger. Capstone project.</p>
+      <a href="#">Kebijakan Privasi</a>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
 </html>
