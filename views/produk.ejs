@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Produk</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === Global Styles === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f1f2f5;
+            color: #333;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* === Sidebar === */
+        .sidebar {
+            width: 260px;
+            background-color: #ffffff;
+            height: 100vh;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .logo-container {
+            padding: 0 24px;
+            margin-bottom: 30px;
+        }
+
+        .logo-container h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-1 { color: #d4b84b; }
+        .logo-2 { color: #4b9dd4; }
+
+        .menu-section {
+            padding: 0 16px;
+        }
+
+        .menu-label {
+            font-size: 12px;
+            color: #9ca3af;
+            margin: 20px 0 10px 16px;
+            font-weight: 500;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            color: #9ca3af;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item i {
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .menu-item.active {
+            background: linear-gradient(90deg, #d1b444 0%, #46607b 30%, #46607b 100%);
+            color: #ffffff;
+        }
+        
+        .menu-item.active i {
+            color: #ffffff;
+        }
+
+        .menu-item:hover:not(.active) {
+            background-color: #f3f4f6;
+            color: #4b5563;
+        }
+
+        /* === Main Content === */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        /* === Topbar === */
+        .topbar {
+            height: 90px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+        .user-profile i {
+            font-size: 30px;
+            color: #111827;
+            cursor: pointer;
+        }
+
+        /* === Dashboard Content (Halaman Produk) === */
+        .dashboard-body {
+            padding: 0 30px 30px 30px;
+        }
+
+        /* Header Produk */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .page-title {
+            color: #5bb3f8; /* Biru muda sesuai desain */
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .btn-add {
+            background-color: #5381ff; /* Biru tombol */
+            color: #ffffff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-add:hover {
+            background-color: #3b6bef;
+        }
+
+        /* Card Tabel Utama */
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            padding: 24px;
+        }
+
+        /* Wrapper Tabel */
+        .table-container {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .product-table thead {
+            background-color: #f8fafc; /* Warna abu-abu sangat muda untuk header */
+        }
+
+        .product-table th, .product-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .product-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .product-table th {
+            font-weight: 600;
+            color: #111827;
+            font-size: 14px;
+        }
+
+        .product-table td {
+            color: #4b5563;
+            font-size: 14px;
+        }
+
+        /* Item Produk dalam Sel */
+        .prod-cell {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .prod-img {
+            width: 40px;
+            height: 40px;
+            background-color: #e5e7eb;
+            border-radius: 6px;
+        }
+
+        .prod-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .prod-cat {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .prod-name {
+            font-size: 13px;
+            color: #111827;
+            font-weight: 500;
+        }
+
+        /* Kolom Alignment Tengah */
+        .product-table th:nth-child(n+2),
+        .product-table td:nth-child(n+2) {
+            text-align: center;
+        }
+
+        /* Area Paginasi */
+        .pagination-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .showing-text {
+            font-size: 14px;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 6px;
+        }
+
+        .page-btn {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            color: #6b7280;
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .page-btn:hover:not(.active) {
+            background-color: #f9fafb;
+        }
+
+        .page-btn.active {
+            background-color: #5381ff;
+            color: #ffffff;
+            border-color: #5381ff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-container">
+            <h1><span class="logo-1">LOG</span><span class="logo-2">O</span></h1>
+        </div>
+        
+        <div class="menu-section">
+            <a href="/beranda" class="menu-item">
+                <i class="fa-solid fa-house"></i>
+                Beranda
+            </a>
+            
+            <div class="menu-label">Manajemen</div>
+            
+            <a href="/arus-kas" class="menu-item">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                Arus Kas
+            </a>
+            <a href="/pendapatan" class="menu-item">
+                <i class="fa-solid fa-sack-dollar"></i>
+                Pendapatan
+            </a>
+            <a href="/pengeluaran" class="menu-item">
+                <i class="fa-solid fa-filter-circle-dollar"></i>
+                Pengeluaran
+            </a>
+            <a href="/produk" class="menu-item active">
+                <i class="fa-solid fa-box"></i>
+                Produk
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="user-profile">
+                <i class="fa-regular fa-circle-user"></i>
+            </div>
+        </header>
+
+        <div class="dashboard-body">
+            
+            <div class="page-header">
+                <h2 class="page-title">Produk</h2>
+                <button class="btn-add"><i class="fa-solid fa-plus"></i>+ Produk</button>
+            </div>
+
+            <div class="card">
+                
+                <div class="table-container">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>Nama Produk/Layanan</th>
+                                <th>Harga</th>
+                                <th>Biaya</th>
+                                <th>Stok</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="prod-cell">
+                                        <div class="prod-img"></div>
+                                        <div class="prod-info">
+                                            <span class="prod-cat">Kategori</span>
+                                            <span class="prod-name">Nama Usaha</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="prod-cell">
+                                        <div class="prod-img"></div>
+                                        <div class="prod-info">
+                                            <span class="prod-cat">Kategori</span>
+                                            <span class="prod-name">Nama Usaha</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="prod-cell">
+                                        <div class="prod-img"></div>
+                                        <div class="prod-info">
+                                            <span class="prod-cat">Kategori</span>
+                                            <span class="prod-name">Nama Usaha</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="prod-cell">
+                                        <div class="prod-img"></div>
+                                        <div class="prod-info">
+                                            <span class="prod-cat">Kategori</span>
+                                            <span class="prod-name">Nama Usaha</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-area">
+                    <div class="showing-text">Showing 1 to 4 of 4 entries</div>
+                    <div class="pagination">
+                        <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

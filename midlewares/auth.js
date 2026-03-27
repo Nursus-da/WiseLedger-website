@@ -7,13 +7,13 @@ async function auth(req, res, next) {
         console.log("authheader yang masuk", authHeader);
 
         if (!authHeader) {
-        return res.status(401).json({ message: "Header Authorization tidak ditemukan" });
+        return res.status(401).redirect('/login')
     }
 
         const token = authHeader && authHeader.split(' ')[1];
 
         
-        if (!token || token === "null") return res.status(401).json({message: "token missing"});
+        if (!token || token === "null") return res.status(401).redirect('/login');
 
         const payload = jwt.verify(token, "inisangat@@rahasia");
         
