@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const Authentication = require('./controllers/authControllers');
+const Aruskas = require('./controllers/aruskasControllers');
 require('dotenv').config();
 const auth = require('./midlewares/auth');
+const aruskas = require('./models/aruskas');
 
 // view engine = ejs
 app.set('view engine', 'ejs');
@@ -50,6 +52,7 @@ app.get('/arus-kas', (req, res) => {
 app.get('/pendapatan', (req,res) => {
     res.render('pendapatan');
 });
+app.post('/tambah-pendapatan', Aruskas.addPendapatan);
 
 // pengeluaran
 app.get('/pengeluaran', (req,res) => {

@@ -19,7 +19,7 @@ function dropdown() {
 }
 
 function Logout() {
-  localStorage.removeItem(storage_key);
+  localStorage.clear();
   window.location.href = "/";
 }
 

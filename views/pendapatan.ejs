@@ -17,7 +17,7 @@
         }
 
         body {
-            background-color: #e5e5e5; /* Adjusted background color to match screenshot */
+            background-color: #e5e5e5;
             color: #333;
             display: flex;
             height: 100vh;
@@ -99,7 +99,7 @@
 
         /* === Topbar === */
         .topbar {
-            height: 90;
+            height: 90px;
             background-color: #ffffff;
             display: flex;
             justify-content: flex-end;
@@ -129,7 +129,7 @@
         .page-title {
             font-size: 28px;
             font-weight: 700;
-            color: #63b3ed; /* Light blue matching screenshot */
+            color: #63b3ed;
         }
 
         .btn-add {
@@ -144,6 +144,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: background-color 0.2s;
         }
 
         .btn-add:hover {
@@ -212,7 +213,7 @@
         th, td {
             padding: 16px;
             border-bottom: 1px solid #e2e8f0;
-            border-right: 1px solid #e2e8f0; /* added vertical borders to match screenshot */
+            border-right: 1px solid #e2e8f0;
         }
 
         th:last-child, td:last-child {
@@ -271,6 +272,133 @@
             background-color: #f1f5f9;
         }
 
+        /* === Modal Styles (NEW) === */
+        .modal {
+            display: none; /* Disembunyikan secara default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(229, 229, 229, 0.7); /* Background transparan */
+            backdrop-filter: blur(2px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex; /* Tampilkan modal saat class .show aktif */
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 550px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 30px;
+            position: relative;
+        }
+
+        .modal-header {
+            margin-bottom: 25px;
+        }
+
+        .btn-back {
+            color: #63b3ed;
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .btn-back:hover {
+            color: #4299e1;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #374151;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #63b3ed;
+        }
+
+        .form-group select {
+            appearance: none; /* Menghilangkan panah default bawaan browser */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            background-color: transparent; /* Memastikan background tidak menutupi ikon */
+        }
+
+        /* Mengubah warna teks saat opsi default (Pilih status) belum diganti */
+        .form-group select:invalid {
+            color: #cbd5e1;
+        }
+
+        .form-group select option {
+            color: #374151; /* Mengembalikan warna teks untuk opsi yang bisa dipilih */
+        }
+
+        .form-group input::placeholder {
+            color: #cbd5e1;
+        }
+
+        .input-icon-wrapper {
+            position: relative;
+        }
+
+        .input-icon-wrapper input {
+            padding-right: 40px; /* Sisakan ruang untuk ikon */
+        }
+
+        .input-icon-wrapper i {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #cbd5e1;
+            pointer-events: none;
+        }
+
+        .btn-submit-form {
+            width: 100%;
+            background-color: #63b3ed;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit-form:hover {
+            background-color: #4299e1;
+        }
+
     </style>
 </head>
 <body>
@@ -318,7 +446,7 @@
             
             <div class="page-header">
                 <h2 class="page-title">Pendapatan</h2>
-                <button class="btn-add"><i class="fa-solid fa-plus"></i> Pendapatan</button>
+                <button class="btn-add" id="btn-tambah-pendapatan"><i class="fa-solid fa-plus"></i> Pendapatan</button>
             </div>
 
             <div class="summary-cards">
@@ -396,6 +524,81 @@
 
         </div>
     </main>
+
+    <div id="modalPendapatan" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa-solid fa-arrow-left btn-back" id="btn-tutup-modal"></i>
+            </div>
+            
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Tipe</label>
+                    <div class="input-icon-wrapper">
+                        <input type="text" value="Pendapatan" disabled>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tanggal</label>
+                    <div class="input-icon-wrapper">
+                        <input type="date" placeholder="Pilih Tanggal">
+                        <i class="fa-regular fa-calendar"></i>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Deskripsi</label>
+                    <input type="text" placeholder="Ketik disini...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Jumlah</label>
+                    <input type="text" placeholder="Rp. Ketik disini...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Simpan ke</label>
+                    <div class="input-icon-wrapper">
+                        <select required>
+                            <option value="" disabled selected hidden>Pilih status</option>
+                            <option value="rekening">Rekening</option>
+                            <option value="uang_kas">Uang Kas</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                 </div>
+                
+                <button class="btn-submit-form">Tambah</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ambil elemen dari DOM
+            const modal = document.getElementById('modalPendapatan');
+            const btnBuka = document.getElementById('btn-tambah-pendapatan');
+            const btnTutup = document.getElementById('btn-tutup-modal');
+
+            // Event untuk membuka modal
+            btnBuka.addEventListener('click', function() {
+                modal.classList.add('show');
+            });
+
+            // Event untuk menutup modal (klik panah kiri)
+            btnTutup.addEventListener('click', function() {
+                modal.classList.remove('show');
+            });
+
+            // Opsional: Tutup modal saat user klik di luar kotak putih
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.classList.remove('show');
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
