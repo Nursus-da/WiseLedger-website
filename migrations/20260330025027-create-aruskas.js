@@ -30,6 +30,9 @@ module.exports = {
       jumlah: {
         type: Sequelize.DECIMAL(10, 2),
       },
+      simpanke: {
+        type: Sequelize.ENUM('rekening', 'uang_kas'),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

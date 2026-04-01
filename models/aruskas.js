@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     tanggal: DataTypes.DATE,
     deskripsi: DataTypes.STRING,
     jumlah: DataTypes.DECIMAL(10, 2),
+    simpanke: DataTypes.ENUM('rekening', 'uang_kas'),
   }, {
     sequelize,
     modelName: 'Aruskas',

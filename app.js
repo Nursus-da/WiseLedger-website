@@ -2,10 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const Authentication = require('./controllers/authControllers');
-const Aruskas = require('./controllers/aruskasControllers');
-require('dotenv').config();
-const auth = require('./midlewares/auth');
-const aruskas = require('./models/aruskas');
+const OperatorAruskas = require('./controllers/aruskasControllers');
+const verifyToken = require('./midlewares/verify');
+const { Op } = require('sequelize');
 
 // view engine = ejs
 app.set('view engine', 'ejs');
@@ -24,7 +23,7 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login');
 });
-app.post('/login', Authentication.login);
+app.post('/api/login', Authentication.login);
 
 // register
 app.get('/register', (req, res) => {
@@ -36,7 +35,7 @@ app.post('/register', Authentication.register)
 app.get('/beranda', (req, res) => {
     res.render('beranda');
 });
-app.get('/beranda/auth', auth, (req, res) => {
+app.get('/beranda/auth', verifyToken, (req, res) => {
     res.json({
         success: true,
         user: req.user
@@ -47,21 +46,46 @@ app.get('/beranda/auth', auth, (req, res) => {
 app.get('/arus-kas', (req, res) => {
     res.render('arus-kas');
 });
+app.get('/arus-kas/auth', verifyToken, (req, res) => {
+    res.json({
+        success: true,
+        user: req.user
+    });
+});
 
 // pendapatan
 app.get('/pendapatan', (req,res) => {
     res.render('pendapatan');
 });
-app.post('/tambah-pendapatan', Aruskas.addPendapatan);
+app.get('/pendapatan/auth', verifyToken, (req, res) => {
+    res.json({
+        success: true,
+        user: req.user
+    });
+});
+app.post('/pendapatan/tambah', verifyToken, OperatorAruskas.add);
 
 // pengeluaran
 app.get('/pengeluaran', (req,res) => {
     res.render('pengeluaran');
 });
+app.get('/pengeluaran/auth', verifyToken, (req, res) => {
+    res.json({
+        success: true,
+        user: req.user
+    });
+});
+app.post('/pengeluaran/tambah', OperatorAruskas.add);
 
 // produk
 app.get('/produk', (req,res) => {
     res.render('produk');
+});
+app.get('/produk/auth', verifyToken, (req, res) => {
+    res.json({
+        success: true,
+        user: req.user
+    });
 });
 
 app.listen(port, () => {

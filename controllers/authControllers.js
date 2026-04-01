@@ -1,6 +1,7 @@
 const { User } = require("../models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 class Authentication {
   static async register(req, res) {
@@ -60,7 +61,7 @@ class Authentication {
 
     const token = jwt.sign(
       { id: user.id, email: user.email },
-      "inisangat@@rahasia",
+      process.env.SECRET_KEY,
     );
 
     return res.status(200).json({ message: "berhasil login", token: token });
