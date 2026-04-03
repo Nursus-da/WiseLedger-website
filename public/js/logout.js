@@ -20,6 +20,7 @@ function dropdown() {
 
 function Logout() {
   localStorage.clear();
+  location.reload();
   window.location.href = "/";
 }
 

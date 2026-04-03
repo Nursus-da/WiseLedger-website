@@ -63,7 +63,9 @@ app.get('/pendapatan/auth', verifyToken, (req, res) => {
         user: req.user
     });
 });
-app.post('/pendapatan/tambah', verifyToken, OperatorAruskas.add);
+app.get('/pendapatan/list', verifyToken, OperatorAruskas.listPendapatan);
+app.post('/pendapatan/tambah', verifyToken, OperatorAruskas.addPendapatan);
+
 
 // pengeluaran
 app.get('/pengeluaran', (req,res) => {
@@ -75,7 +77,8 @@ app.get('/pengeluaran/auth', verifyToken, (req, res) => {
         user: req.user
     });
 });
-app.post('/pengeluaran/tambah', OperatorAruskas.add);
+app.get('/pengeluaran/list', verifyToken, OperatorAruskas.listPengeluaran);
+app.post('/pengeluaran/tambah',  verifyToken,OperatorAruskas.addPengeluaran);
 
 // produk
 app.get('/produk', (req,res) => {

@@ -1,4 +1,4 @@
-async function authProduk() {
+const authProduk = async function auth() {
     await panggilApi('/produk/auth', {
         method: 'GET',
         headers: {

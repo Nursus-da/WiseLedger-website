@@ -5,7 +5,7 @@ const modal = document.getElementById('modalPendapatan');
 const btnBuka = document.getElementById('btn-tambah-pendapatan');
 const btnTutup = document.getElementById('btn-tutup-modal');
 
-async function authArus() {
+const authPendapatan = async function auth() {
     await panggilApi('/pendapatan/auth', {
         method: 'GET',
         headers: {
@@ -15,7 +15,7 @@ async function authArus() {
     });
 }
 
-function show() {
+const show = function show() {
 
     // Event untuk membuka modal
     btnBuka.addEventListener('click', function() {
@@ -35,7 +35,7 @@ function show() {
     });
 }
 
-async function setupFormPendapatan() {
+const setupFormPendapatan = async function setupFormPendapatan() {
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -44,9 +44,9 @@ async function setupFormPendapatan() {
         const tanggal = document.getElementById('tanggal').value;
         const deskripsi = document.getElementById('deskripsi').value;
         const jumlah = document.getElementById('jumlah').value;
-        const SimpanKe = document.getElementById('simpan').value;
+        const simpanke = document.getElementById('simpan').value;
 
-        console.log(tipe, tanggal, deskripsi, jumlah, SimpanKe);
+        console.log(tipe, tanggal, deskripsi, jumlah, simpanke);
 
         await panggilApi('/pendapatan/tambah', {
             method: 'POST',
@@ -54,7 +54,7 @@ async function setupFormPendapatan() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ tipe,tanggal, deskripsi, jumlah, SimpanKe })
+            body: JSON.stringify({ tipe,tanggal, deskripsi, jumlah, simpanke })
         });
         modal.classList.remove('show');
         location.reload();
@@ -62,7 +62,7 @@ async function setupFormPendapatan() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    authArus();
+    authPendapatan();
     show();
     setupFormPendapatan();
 });

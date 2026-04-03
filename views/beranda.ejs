@@ -6,7 +6,10 @@
     <title>Dashboard Keuangan</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    
     <link rel="stylesheet" href="/css/dashboard/style.css">
 </head>
 <body>
@@ -66,8 +69,7 @@
                 <div class="card">
                     <h3 class="card-title">Inventaris</h3>
                     <div class="inventaris-grid" id="inventaris-data">
-                        <!-- Data akan diisi menggunakan JavaScript -->
-                    </div>
+                        </div>
                 </div>
 
                 <div class="card">
@@ -97,7 +99,10 @@
     </main>
 
     <script>
-        // 1. Populate Inventaris Data (repeating pattern from screenshot)
+        // Daftarkan plugin datalabels secara global
+        Chart.register(ChartDataLabels);
+
+        // 1. Populate Inventaris Data
         const inventarisItems = [
             "Lumpia : 10 pcs", "Lumpia : 10 pcs", "Lumpia : 10 pcs",
             "Pangsit : 10 pcs", "Pangsit : 10 pcs", "Pangsit : 10 pcs",
@@ -116,14 +121,14 @@
             invGrid.appendChild(div);
         });
 
-        // 2. Setup Pie Chart
+        // 2. Setup Pie Chart (DIUBAH UNTUK MENAMPILKAN PERSENTASE)
         const ctxPie = document.getElementById('pieChart').getContext('2d');
         new Chart(ctxPie, {
             type: 'pie',
             data: {
                 labels: ['Keuntungan', 'Modal'],
                 datasets: [{
-                    data: [100, 50], // 66.67% and 33.33%
+                    data: [100, 50], // Value asli
                     backgroundColor: ['#8884d8', '#ff8042'], 
                     borderWidth: 0
                 }]
@@ -138,6 +143,37 @@
                             usePointStyle: true,
                             boxWidth: 8,
                             font: { size: 11 }
+                        }
+                    },
+                    // Mengatur tampilan persentase di dalam diagram pie
+                    datalabels: {
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 14
+                        },
+                        formatter: (value, ctx) => {
+                            let sum = 0;
+                            let dataArr = ctx.chart.data.datasets[0].data;
+                            dataArr.map(data => {
+                                sum += data;
+                            });
+                            let percentage = (value * 100 / sum).toFixed(1) + "%";
+                            return percentage; // Mereturn persentase (contoh: 66.7%)
+                        }
+                    },
+                    // Memodifikasi tooltip (saat di hover) agar memunculkan persentase juga
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                let sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                                let percentage = (context.raw * 100 / sum).toFixed(1) + "%";
+                                return label + percentage + ' (' + context.raw + ')';
+                            }
                         }
                     }
                 }
@@ -158,7 +194,7 @@
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
                 datasets: [{
                     label: 'Keuntungan',
-                    data: [82, 70, 44, 24, 44, 44, 55, 68, 80, 89, 88, 94], // Estimated data points from image
+                    data: [82, 70, 44, 24, 44, 44, 55, 68, 80, 89, 88, 94],
                     borderColor: '#8884d8',
                     backgroundColor: gradientFill,
                     borderWidth: 2,
@@ -167,14 +203,16 @@
                     pointBorderWidth: 2,
                     pointRadius: 4,
                     fill: true,
-                    tension: 0.4 // Makes the line smooth (curved)
+                    tension: 0.4
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false } // Hidden legend for line chart
+                    legend: { display: false },
+                    // Menonaktifkan datalabels untuk chart line karena kita hanya butuh di chart pie
+                    datalabels: { display: false } 
                 },
                 scales: {
                     y: {
@@ -183,7 +221,7 @@
                         grid: {
                             color: '#f3f4f6',
                             drawBorder: false,
-                            borderDash: [5, 5] // Dashed grid lines
+                            borderDash: [5, 5]
                         },
                         ticks: { color: '#9ca3af', font: { size: 11 } }
                     },
@@ -199,7 +237,7 @@
             }
         });
     </script>
-    <script src="/js/main.js"></script>
+    <script src="/js/logout.js"></script>
     <script src="/js/utils/get.js"></script>
     <script src="/js/utils/utils.js"></script>
     <script src="/js/auth/beranda.js"></script>

@@ -1,4 +1,4 @@
-async function authBeranda() {
+const authBeranda = async function auth() {
     await panggilApi('/beranda/auth', {
         method: 'GET',
         headers: {
