@@ -1,4 +1,4 @@
-const form = document.getElementById('formPendapatan');
+const form = document.getElementById('formPengeluaran');
 
 // Ambil elemen untuk show modal
 const modal = document.getElementById('modalPendapatan');
@@ -6,7 +6,7 @@ const btnBuka = document.getElementById('btn-tambah-pendapatan');
 const btnTutup = document.getElementById('btn-tutup-modal');
 
 const authPengeluaran = async function auth() {
-    await panggilApi('/pendapatan/auth', {
+    await panggilApi('/pengeluaran/auth', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

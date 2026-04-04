@@ -58,16 +58,12 @@
             </div>
 
             <div class="summary-cards">
-                <div class="card card-light-blue">
-                    <h4>Pengeluaran Bulan Ini</h4>
-                    <h2>Rp. 0</h2>
-                    <p><span class="text-green">+0</span> Rb lebih tinggi dibanding bulan lalu</p>
+                <div class="card card-light-blue" id="pengeluaran-bulan-ini">
+                    
                 </div>
 
-                <div class="card card-grey-blue">
-                    <h4>Pengeluaran tertinggi</h4>
-                    <h2>Rp. 0</h2>
-                    <p>Tipe nya apa</p>
+                <div class="card card-grey-blue" id="pengeluaran-tertinggi">
+                   
                 </div>
 
                 <div class="card card-bright-blue">
@@ -113,7 +109,7 @@
             </div>
             
             <div class="modal-body">
-                <form id="formPendapatan">
+                <form id="formPengeluaran">
                     <div class="form-group">
                         <label>Tipe</label>
                         <div class="input-icon-wrapper">
@@ -183,10 +179,10 @@
         });
     </script>
 
-    <script src="/js/utils/get.js"></script>
+    <script src="/js/utils/getToken.js"></script>
     <script src="/js/utils/utils.js"></script>
-    <script src="/js/auth/pendapatan.js"></script>
-    <script src="/js/utils/arusKas/utilsGet.js"></script>
+    <script src="/js/auth/pengeluaran.js"></script>
     <script src="/js/getAll/getPengeluaran.js"></script>
+    <script src="/js/utilsArusKas/utilsGetPengeluaran.js"></script>
 </body>
 </html>

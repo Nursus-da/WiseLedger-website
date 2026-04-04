@@ -1,4 +1,5 @@
 const { Aruskas } = require('../models');
+const { Op, where } = require('sequelize');
 
 class OperatorAruskas {
     
@@ -9,17 +10,77 @@ class OperatorAruskas {
                 userId: req.user.id
             }
         });
-        res.status(200).json(pendapatan);
+
+        const PendapatanBulanIni = await Aruskas.sum('jumlah', {
+            where: {
+                tipe: 'Pendapatan',
+                userId: req.user.id,
+                createdAt: {
+                    // tampilkan pendapatan bulan ini dan reset saat bulan berganti
+                    [Op.gte]: new Date(new Date().getFullYear(), new Date().getMonth(), 1), 
+                    [Op.lt]: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1)
+                }
+            }
+        });
+
+        const PendapatanTertinggi = await Aruskas.max('jumlah', {
+            where: {
+                tipe: 'Pendapatan',
+                userId: req.user.id,
+                createdAt: {
+                    // tampilkan pendapatan bulan ini dan reset saat bulan berganti
+                    [Op.gte]: new Date(new Date().getFullYear(), new Date().getMonth(), 1), 
+                    [Op.lt]: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1)
+                }
+            }
+        });
+
+
+
+        res.status(200).json({
+            pendapatan: pendapatan,
+            PendapatanBulanIni: PendapatanBulanIni || 0,
+            PendapatanTertinggi: PendapatanTertinggi
+        });
     }
 
     static async listPengeluaran(req, res){
         const pengeluaran = await Aruskas.findAll({
             where: {
-                tipe: 'pengeluaran',
+                tipe: 'Pengeluaran',
                 userId: req.user.id
             }
         });
-        res.status(200).json(pengeluaran);
+
+        const PengeluaranBulanIni = await Aruskas.sum('jumlah', {
+            where: {
+                tipe: 'Pengeluaran',
+                userId: req.user.id,
+                createdAt: {
+                    // tampilkan pendapatan bulan ini dan reset saat bulan berganti
+                    [Op.gte]: new Date(new Date().getFullYear(), new Date().getMonth(), 1), 
+                    [Op.lt]: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1)
+                }
+            }
+        });
+
+        const PengeluaranTertinggi = await Aruskas.max('jumlah', {
+            where: {
+                tipe: 'Pengeluaran',
+                userId: req.user.id,
+                createdAt: {
+                    // tampilkan pendapatan bulan ini dan reset saat bulan berganti
+                    [Op.gte]: new Date(new Date().getFullYear(), new Date().getMonth(), 1), 
+                    [Op.lt]: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1)
+                }
+            }
+        });
+
+        res.status(200).json({
+            pengeluaran: pengeluaran,
+            PengeluaranBulanIni:PengeluaranBulanIni || 0,
+            PengeluaranTertinggi: PengeluaranTertinggi
+        });
     }
     
     static async addPendapatan(req, res){
