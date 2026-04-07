@@ -1,4 +1,4 @@
-const panggilApiGet = async (endpoint, options = {}) => {
+const panggilApiGetPengeluaran = async (endpoint, options = {}) => {
     
     try {
         //Lakukan Request ke backend
@@ -12,22 +12,22 @@ const panggilApiGet = async (endpoint, options = {}) => {
 
             console.log("ini pendapatan" ,data);
 
-            let outputPengBulIni = "<h4>Pengeluaran Bulan Ini</h4>";
-            outputPengBulIni += `<h2>${data.PengeluaranBulanIni.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })} </h2>`;
+            let outputPengBulIni = "<h4>Pengeluaran bulan ini</h4>";
+            outputPengBulIni += `<h2>${Number(data.PengeluaranBulanIni).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })} </h2>`;
             outputPengBulIni += `<p><span class="text-green">+0</span> Rb lebih tinggi dibanding bulan lalu</p>`;
             document.getElementById("pengeluaran-bulan-ini").innerHTML = outputPengBulIni;
 
-            let outputPendTertinggi = "<h4>Pengeluaran Tertinggi</h4>";
-            outputPendTertinggi += `<h2>${data.PengeluaranTertinggi.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })} </h2>`;
-            outputPendTertinggi += `<p><span>Pengeluaran</span></p>`;
-            document.getElementById("pengeluaran-tertinggi").innerHTML = outputPengBulIni;;
+            let outputPengTertinggi = "<h4>Pengeluaran tertinggi</h4>";
+            outputPengTertinggi += `<h2>${Number(data.PengeluaranTertinggi).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })} </h2>`;
+            outputPengTertinggi += `<p><span>Pengeluaran</span></p>`;
+            document.getElementById("pengeluaran-tertinggi").innerHTML = outputPengTertinggi;
 
             let output = "<tr>";
             data.pengeluaran.forEach(item => {
                 output += `<td>${new Date(item.tanggal).toLocaleDateString('id-ID')}</td>`;
                 // output += `<td>${item.deskripsi}</td>`;
                 output += `<td>${item.tipe}</td>`;
-                output += `<td>${Number(item.jumlah.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }))}</td>`;
+                output += `<td>${Number(item.jumlah).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</td>`;
                 output += 
                 `<td>
                     <a href="/detailPendapatan/${item.id}"><i class="fa-solid fa-circle-info"></i> Detail</a>
@@ -44,7 +44,7 @@ const panggilApiGet = async (endpoint, options = {}) => {
 
     } catch (error) {
         console.error("Error:", error);
-        localStorage.removeItem('token'); //Hapus token sampah jika error
+        localStorage.clear(); //Hapus token sampah jika error
         window.location.href = '/login';
     }
 

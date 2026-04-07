@@ -6,6 +6,9 @@ async function verifyToken(req, res, next) {
     
     try {
         const authHeader = req.headers['authorization'];
+        const body = req.body;
+
+        console.log("ini log midleware",body);
 
         if (!authHeader) {
         return res.status(401).redirect('/login')

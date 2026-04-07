@@ -1,9 +1,9 @@
 const form = document.getElementById('formPendapatan');
-
 // Ambil elemen untuk show modal
-const modal = document.getElementById('modalPendapatan');
-const btnBuka = document.getElementById('btn-tambah-pendapatan');
-const btnTutup = document.getElementById('btn-tutup-modal');
+    const modal = document.getElementById('modalPendapatan');
+    const btnBuka = document.getElementById('btn-tambah-pendapatan');
+    const btnTutup = document.getElementById('btn-tutup-modal');
+
 
 const authPendapatan = async function auth() {
     await panggilApi('/pendapatan/auth', {
@@ -15,6 +15,7 @@ const authPendapatan = async function auth() {
     });
 }
 
+// show active dan show inactive produk
 const show = function show() {
 
     // Event untuk membuka modal

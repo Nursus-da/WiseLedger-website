@@ -1,5 +1,5 @@
-const pendapatan = async function get() {
-    await panggilApiGet('/pendapatan/list', {
+const verifyPengeluaran = async function get() {
+    await panggilApiGetPengeluaran('/pengeluaran/list', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -10,5 +10,5 @@ const pendapatan = async function get() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    pendapatan();
+    verifyPengeluaran();
 });

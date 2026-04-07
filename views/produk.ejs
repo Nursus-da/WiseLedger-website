@@ -64,7 +64,7 @@
                             <tr>
                                 <th>Nama Produk/Layanan</th>
                                 <th>Harga</th>
-                                <th>Biaya</th>
+                                <!-- <th>Biaya</th> -->
                                 <th>Stok</th>
                                 <th>Aksi</th>
                             </tr>
@@ -81,52 +81,7 @@
                                     </div>
                                 </td>
                                 <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="prod-cell">
-                                        <div class="prod-img"></div>
-                                        <div class="prod-info">
-                                            <span class="prod-cat">Kategori</span>
-                                            <span class="prod-name">Nama Usaha</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="prod-cell">
-                                        <div class="prod-img"></div>
-                                        <div class="prod-info">
-                                            <span class="prod-cat">Kategori</span>
-                                            <span class="prod-name">Nama Usaha</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="prod-cell">
-                                        <div class="prod-img"></div>
-                                        <div class="prod-info">
-                                            <span class="prod-cat">Kategori</span>
-                                            <span class="prod-name">Nama Usaha</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>-</td>
-                                <td>-</td>
+                                <!-- <td>-</td> -->
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
@@ -145,10 +100,58 @@
 
             </div>
         </div>
+
+    <div id="modalProduk" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <button id="btnTutupModal" class="btn-back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="formTambahProduk">
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select class="form-input" id="form-input-kategori">
+                            <option value="" disabled selected>Pilih Kategori</option>
+                            <option value="Produk">Produk</option>
+                            <option value="Jasa">Jasa</option>
+                        </select>
+                    </div>
+                
+                    <div class="form-group">
+                        <label>Stok</label>
+                        <input type="text" class="form-input" id="form-input-stok" placeholder="Ketik disini...">
+                    </div>
+                
+                    <div class="form-group">
+                        <label>Nama Jasa/Produk</label>
+                        <input type="text" class="form-input" id="form-input-produk" placeholder="Ketik disini...">
+                    </div>
+                
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input type="text" class="form-input" id="form-input-harga" placeholder="Rp. Ketik Harga Jasa/Produk">
+                    </div>
+                
+                    <div class="form-group">
+                        <label>Biaya</label>
+                        <input type="text" class="form-input" id="form-input-biaya" placeholder="Rp. Ketik Biaya Jasa/Produk">
+                    </div>
+                
+                    <button type="submit" class="btn-submit">Tambah</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     </main>
 
-    <script src="/js/utils/getToken.js"></script>
-    <script src="/js/utils/utils.js"></script>
+    <script src="/js/utilsAuth/getToken.js"></script>
+    <script src="/js/utilsAuth/utils.js"></script>
     <script src="/js/auth/produk.js"></script>
+    <script src="/js/verifyListProduk/getListProduk.js"></script>
+    <script src="/js/utilsProdukList/utilsGetProduk.js"></script>
 </body>
 </html>

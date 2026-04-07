@@ -4,7 +4,7 @@ const port = 3000;
 const Authentication = require('./controllers/authControllers');
 const OperatorAruskas = require('./controllers/aruskasControllers');
 const verifyToken = require('./midlewares/verify');
-const { Op } = require('sequelize');
+const OperatorProduks = require('./controllers/produkControllers');
 
 // view engine = ejs
 app.set('view engine', 'ejs');
@@ -52,6 +52,7 @@ app.get('/arus-kas/auth', verifyToken, (req, res) => {
         user: req.user
     });
 });
+app.get('/arus-kas/list', verifyToken, OperatorAruskas.arusKas);
 
 // pendapatan
 app.get('/pendapatan', (req,res) => {
@@ -90,6 +91,7 @@ app.get('/produk/auth', verifyToken, (req, res) => {
         user: req.user
     });
 });
+app.post('/produk/tambah', verifyToken, OperatorProduks.tambahProduk);
 
 app.listen(port, () => {
     console.log(`Beerjalann pada http://localhost:${port}`);

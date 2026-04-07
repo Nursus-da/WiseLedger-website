@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "",
-    "password": "",
-    "database": "",
+    "username": "localnicho",
+    "password": "passwordnicho",
+    "database": "wiseledger_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

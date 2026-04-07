@@ -54,22 +54,16 @@
             <h2 class="page-title">Arus Kas</h2>
 
             <div class="summary-cards">
-                <div class="card card-light-blue >
-">
-                    <div class="card-label">Laba bersih</div>
-                    <div class="card-value">Rp. 0</div>
+                <div class="card card-light-blue" id="card-laba">
+                    
                 </div>
 
-                <div class="card card-pendapatan">
-                    <div class="card-label">Pendapatan</div>
-                    <div class="card-value">Rp. 0</div>
-                    <div class="card-subtext"><span class="text-green">+0</span> Transaksi</div>
+                <div class="card card-pendapatan" id="card-pendapatan">
+                    
                 </div>
 
-                <div class="card card-pengeluaran">
-                    <div class="card-label">Pengeluaran</div>
-                    <div class="card-value">Rp. 0</div>
-                    <div class="card-subtext"><span class="text-red">+0</span> Transaksi</div>
+                <div class="card card-pengeluaran" id="card-pengeluaran">
+                    
                 </div>
             </div>
 
@@ -78,46 +72,13 @@
                     <thead>
                         <tr>
                             <th>Tanggal</th>
-                            <th>Deskripsi</th>
-                            <th>Kategori</th>
                             <th>Tipe</th>
                             <th>Status</th>
                             <th>Nominal</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>dd/mm/yy</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>dd/mm/yy</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>dd/mm/yy</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>dd/mm/yy</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
+                    <tbody id="table-aruskas">
+                        
                     </tbody>
                 </table>
                 
@@ -134,8 +95,10 @@
         </div>
     </main>
 
-    <script src="/js/utils/getToken.js"></script>
-    <script src="/js/utils/utils.js"></script>
+    <script src="/js/utilsAuth/getToken.js"></script>
+    <script src="/js/utilsAuth/utils.js"></script>
     <script src="/js/auth/arus-kas.js"></script>
+    <script src="/js/utilsArusKasList/utilsGetAruskas.js"></script>
+    <script src="/js/verifyList/getArusKas.js"></script>
 </body>
 </html>

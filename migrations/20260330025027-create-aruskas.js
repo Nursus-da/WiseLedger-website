@@ -31,7 +31,7 @@ module.exports = {
         type: Sequelize.DECIMAL(10, 2),
       },
       simpanke: {
-        type: Sequelize.ENUM('rekening', 'uang_kas'),
+        type: Sequelize.ENUM('Rekening', 'Uang Kas'),
       },
       createdAt: {
         allowNull: false,
