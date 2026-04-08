@@ -1,9 +1,9 @@
 const getListProduk = async function get() {
     await panggilApiGetProduk('/produk/list', {
-        method: 'POST',
+        method: 'GET',
         headers: {
             'Content-Type' : 'application/json',
-            'Autorization' : `Bearer ${token}`
+            'Authorization' : `Bearer ${token}`
         }
     }); 
 }

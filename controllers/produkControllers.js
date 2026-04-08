@@ -1,12 +1,9 @@
 const { Produk } = require('../models');
-const user = require('../models/user');
 
 class OperatorProduks {
     static async tambahProduk (req, res){
         const body = req.body;
         const userId = req.user.id;
-        console.log("ini log controller",body);
-        console.log("ini log id",userId);
 
         if (!userId) return res.status(401).json({message: "unautorized"});
         if (!body.inputKategori || !body.inputStok || !body.inputProduk || !body.inputHarga || !body.inputBiaya) return res.status(400).json({message: "Input tidak boleh kosong"});
@@ -25,6 +22,27 @@ class OperatorProduks {
             message: "berhasil menambahkan produk"
         });
 
+    }
+
+    static async getListProduk (req, res) {
+        const userId = req.user.id;
+        console.log("ini log id getListProduk",userId);
+
+        if (!userId) return res.status(401).json({message: unautorized});
+
+        const listProduk = await Produk.findAll({
+            where: {
+                userId: userId
+            }
+        });
+
+        if(!listProduk) return res.status(400).json({message: "gagal mengambil produk"});
+
+        console.log("ini log getListProduk",listProduk);
+
+        res.status(200).json({
+            listProduk : listProduk
+        });
     }
 }
 

@@ -15,8 +15,8 @@ const panggilApi = async (endpoint, options = {}) => {
 
     } catch (error) {
         console.error("Error:", error);
-        localStorage.clear(); //Hapus token sampah jika error
-        window.location.href = '/login';
+        // localStorage.clear(); //Hapus token sampah jika error
+        // window.location.href = '/login';
     }
 
 }

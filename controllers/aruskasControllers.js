@@ -5,9 +5,6 @@ class OperatorAruskas {
     
     static async arusKas(req, res) {
 
-        console.log(req.user.id);
-        console.log("ini log controller",req.body);
-
         if (!req.user) return res.status(401).json({message: "unautorized"});
 
         // hitung total pendapatan bulan ini
@@ -141,8 +138,6 @@ class OperatorAruskas {
     
     static async addPendapatan(req, res){
         const body = req.body;
-
-        console.log("ini log controller",req.body);
 
         if (!req.user) return res.status(401).json({message: "unautorized"});
         if ( !body.tanggal || !body.deskripsi || !body.jumlah ) return res.status(400).json({message: "tanggal, deskripsi, dan jumlah harus diisi"});

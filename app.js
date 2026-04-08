@@ -5,6 +5,7 @@ const Authentication = require('./controllers/authControllers');
 const OperatorAruskas = require('./controllers/aruskasControllers');
 const verifyToken = require('./midlewares/verify');
 const OperatorProduks = require('./controllers/produkControllers');
+const OperatorBeranda = require('./controllers/berandaControllers');
 
 // view engine = ejs
 app.set('view engine', 'ejs');
@@ -41,6 +42,7 @@ app.get('/beranda/auth', verifyToken, (req, res) => {
         user: req.user
     });
 });
+app.get('/beranda/data', verifyToken, OperatorBeranda.getData);
 
 // arus kas
 app.get('/arus-kas', (req, res) => {
@@ -92,6 +94,7 @@ app.get('/produk/auth', verifyToken, (req, res) => {
     });
 });
 app.post('/produk/tambah', verifyToken, OperatorProduks.tambahProduk);
+app.get('/produk/list', verifyToken, OperatorProduks.getListProduk);
 
 app.listen(port, () => {
     console.log(`Beerjalann pada http://localhost:${port}`);

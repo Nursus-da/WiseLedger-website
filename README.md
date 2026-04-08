@@ -15,6 +15,6 @@ Proyek ini berfokus pada pengembangan web application manajemen keuangan berbasi
 ## Menjalankan
 
 1. `npm install`
-2. `npm run start`
+2. ``
 3. Buka `http://localhost:3000`
 
