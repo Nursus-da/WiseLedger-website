@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiseLedger - Edit Pengeluaran</title>
+    <link rel="stylesheet" href="/css/formEdit/styleProduk.css">
+    
+</head>
+<body>
+
+    <div class="form-container">
+
+        <form id="formEditPengeluaran">
+            <div class="form-group">
+                <label>Tipe</label>
+                <select class="form-input" id="form-input-tipe">
+                    <option value="<%= data.tipe %>" disabled selected><%= data.tipe %></option>
+                </select>
+                <input type="hidden" id="id" value="<%= data.id %>">
+            </div>
+
+            <div class="form-group">
+                <label>Tanggal</label>
+                <input type="date" class="form-input" id="form-input-tanggal"  value="<%= new Date(data.tanggal).toISOString().split('T')[0] %>">
+            </div>
+
+            <div class="form-group">
+                <label>Deskripsi</label>
+                <input type="text" class="form-input" id="form-input-deskripsi"  value="<%= data.deskripsi %>">
+            </div>
+
+            <div class="form-group">
+                <label>Jumlah</label>
+                <input type="text" class="form-input" id="form-input-jumlah"  value="<%= data.jumlah %>" >
+            </div>
+
+            <div class="form-group">
+                <label>Simpan Ke</label>
+                <select class="form-input" id="form-input-simpanke">
+                    <option value="<%= data.simpanke %>" disabled selected><%= data.simpanke %></option>
+                    <option value="Rekening">Rekening</option>
+                    <option value="Uang Kas">Uang Kas</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit">Edit</button>
+        </form>
+    </div>
+
+    <script src="/js/utilsAuth/getToken.js"></script>
+    <script src="/js/updatedelete/udpengeluaran/utils.js"></script>
+    <script src="/js/updatedelete/udpengeluaran/update.js"></script> 
+
+</body>
+</html>

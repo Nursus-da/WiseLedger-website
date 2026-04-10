@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const { Produk } = require('../models');
 
 class OperatorProduks {
@@ -38,12 +39,81 @@ class OperatorProduks {
 
         if(!listProduk) return res.status(400).json({message: "gagal mengambil produk"});
 
-        console.log("ini log getListProduk",listProduk);
-
         res.status(200).json({
             listProduk : listProduk
         });
     }
+
+    static async editProduk (req, res) {
+
+        const id = req.params.id;
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        const data = await Produk.findByPk(id);
+
+        if(!data) return res.status(400).json({message: "produk tidak ditemukan"});
+
+        res.render('users/editProduk', {data: data});
+
+    }
+
+    static async updateProduk (req, res) {
+
+        const body = req.body;
+
+        if (!body.inputKategori || !body.inputStok || !body.inputProduk || !body.inputHarga || !body.inputBiaya) return res.status(400).json({message: "Input tidak boleh kosong"});
+        console.log("ini body :",body);
+
+        const updateProduk = await Produk.update(
+            {
+                kategori: body.inputKategori,
+                stok: body.inputStok,
+                produk: body.inputProduk,
+                harga: body.inputHarga,
+                biaya: body.inputBiaya
+            },
+            {
+                where: {
+                    id: req.params.id
+                }
+            });
+
+            if(!updateProduk) return res.status(400).json({message: "gagal mengupdate produk"});
+            res.status(201).json({
+                message: "berhasil mengupdate produk"
+            });
+    }
+
+    static async deleteProduk (req, res) {
+
+        const id = req.params.id;
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        const deleteProduk = await Produk.destroy({
+            where: {
+                id: id
+            }
+        });
+
+        if(!deleteProduk) return res.status(400).json({message: "gagal menghapus produk"});
+        res.status(200).json({message: "berhasil menghapus produk"});
+
+    }
+
+    static async detailProduk (req, res) {
+        const id = req.params.id;
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        const data = await Produk.findByPk(id);
+
+        if(!data) return res.status(400).json({message: "produk tidak ditemukan"});
+        res.render('users/detailproduk', {data: data});
+        
+    }
+
 }
 
 module.exports = OperatorProduks;

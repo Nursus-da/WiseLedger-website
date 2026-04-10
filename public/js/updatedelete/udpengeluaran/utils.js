@@ -1,4 +1,4 @@
-const panggilApi = async (endpoint, options = {}) => {
+const udProduk = async (endpoint, options = {}) => {
     
     try {
         //Lakukan Request ke backend

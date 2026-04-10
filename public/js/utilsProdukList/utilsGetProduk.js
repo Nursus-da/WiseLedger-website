@@ -14,7 +14,6 @@ const panggilApiGetProduk = async (endpoint, options = {} ) => {
         let outputTables = '';
 
         data.listProduk.forEach(item => {
-            
             outputTables += '<tr>';
             
             outputTables += `<td>
@@ -30,22 +29,20 @@ const panggilApiGetProduk = async (endpoint, options = {} ) => {
             outputTables += `<td>${Number(item.harga).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</td>`;
             outputTables += `<td>${item.stok}</td>`;
         
-            // Kolom tombol aksi (perbaiki spasi pada <a)
             outputTables += `<td>
-                <a href="/produk/${item.id}"><i class="fa-solid fa-circle-info"></i>Detail</a>
-                <a href="/produk/${item.id}/edit"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
-                <form action="/produk/${item.id}" method="POST">
+                <a href="/produk/detail/${item.id}" class="btn-detail"><i class="fa-solid fa-circle-info"></i>Detail</a>
+                <a href="/produk/edit/${item.id}"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
+                <form class="formHapusProduk" data-id="${item.id}">
                     <button type="submit"><i class="fa-solid fa-trash"></i>Hapus</button>
                 </form>
             </td>`;
             
-            // Tutup baris
             outputTables += '</tr>';
         });
 
         // Masukkan hasil ke dalam elemen dengan id "list-produk"
         document.getElementById("list-produk").innerHTML = outputTables;
-
+        pasangListenerHapus();
         return data;
 
          }

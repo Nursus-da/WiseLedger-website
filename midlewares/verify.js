@@ -8,11 +8,11 @@ async function verifyToken(req, res, next) {
         const authHeader = req.headers['authorization'];
         const body = req.body;
 
-       
+       console.log("ini log authHeader",authHeader);
 
-        if (!authHeader) {
-        return res.status(401).redirect('/login')
-    }
+    //     if (!authHeader) {
+    //     return res.status(401).redirect('/login')
+    // }
 
         const token = authHeader && authHeader.split(' ')[1];
 

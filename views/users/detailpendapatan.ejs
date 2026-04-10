@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiseledger - Detail Pendapatan</title>
+    <link rel="stylesheet" href="/css/detail/style.css">
+    
+</head>
+<body>
+    <div class="table-container">
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Deskripsi</th>
+                    <th>Tipe</th>
+                    <th>Jumlah</th>
+                    <th>Simpan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= new Date(data.tanggal).toLocaleDateString('id-ID') %></td>
+                    <td><%= data.deskripsi %></td> 
+                    <td><%= data.tipe %></td> 
+                    <td><%= Number(data.jumlah).toLocaleString('id-ID', { style: 'currency', currency: 'IDR'}) %></td>
+                    <td><%= data.simpanke %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="/pendapatan">-> Kembali</a>
+</body>
+</html>

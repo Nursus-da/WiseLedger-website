@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiseLedger - Edit Produk</title>
+    <link rel="stylesheet" href="/css/formEdit/styleProduk.css">
+    
+</head>
+<body>
+
+    <div class="form-container">
+
+        <form id="formEditProduk">
+            <div class="form-group">
+                <label>Kategori</label>
+                <select class="form-input" id="form-input-kategori">
+                    <option value="<%= data.kategori %>" disabled selected><%= data.kategori %></option>
+                    <option value="Produk">Produk</option>
+                    <option value="Jasa">Jasa</option>
+                </select>
+                <input type="hidden" id="id" value="<%= data.id %>">
+            </div>
+
+            <div class="form-group">
+                <label>Stok</label>
+                <input type="text" class="form-input" id="form-input-stok" placeholder="Ketik disini..." value="<%= data.stok %>">
+            </div>
+
+            <div class="form-group">
+                <label>Nama Jasa/Produk</label>
+                <input type="text" class="form-input" id="form-input-produk" placeholder="Ketik disini..." value="<%= data.produk %>">
+            </div>
+
+            <div class="form-group">
+                <label>Harga</label>
+                <input type="text" class="form-input" id="form-input-harga" placeholder="Rp. Ketik Harga Jasa/Produk" value="<%= data.harga %>" >
+            </div>
+
+            <div class="form-group">
+                <label>Biaya</label>
+                <input type="text" class="form-input" id="form-input-biaya" placeholder="Rp. Ketik Biaya Jasa/Produk" value="<%= data.biaya %>" >
+            </div>
+
+            <button type="submit" class="btn-submit">Edit</button>
+        </form>
+    </div>
+
+    <script src="/js/utilsAuth/getToken.js"></script>
+    <script src="/js/updatedelete/udproduk/utils.js"></script>
+    <script src="/js/updatedelete/udproduk/updateProduk.js"></script> 
+
+</body>
+</html>

@@ -34,7 +34,7 @@ app.post('/register', Authentication.register)
 
 // beranda
 app.get('/beranda', (req, res) => {
-    res.render('beranda');
+    res.render('users/beranda');
 });
 app.get('/beranda/auth', verifyToken, (req, res) => {
     res.json({
@@ -46,7 +46,7 @@ app.get('/beranda/data', verifyToken, OperatorBeranda.getData);
 
 // arus kas
 app.get('/arus-kas', (req, res) => {
-    res.render('arus-kas');
+    res.render('users/arus-kas');
 });
 app.get('/arus-kas/auth', verifyToken, (req, res) => {
     res.json({
@@ -58,7 +58,7 @@ app.get('/arus-kas/list', verifyToken, OperatorAruskas.arusKas);
 
 // pendapatan
 app.get('/pendapatan', (req,res) => {
-    res.render('pendapatan');
+    res.render('users/pendapatan');
 });
 app.get('/pendapatan/auth', verifyToken, (req, res) => {
     res.json({
@@ -68,11 +68,18 @@ app.get('/pendapatan/auth', verifyToken, (req, res) => {
 });
 app.get('/pendapatan/list', verifyToken, OperatorAruskas.listPendapatan);
 app.post('/pendapatan/tambah', verifyToken, OperatorAruskas.addPendapatan);
+app.get('/pendapatan/edit/:id', OperatorAruskas.editPendapatan);
+app.put('/pendapatan/update/:id', verifyToken,OperatorAruskas.updatePendapatan);
+app.delete('/pendapatan/delete/:id', verifyToken, OperatorAruskas.deletePendapatan);
+app.get('/pendapatan/detail/:id', OperatorAruskas.detailPendapatan);
+
+
+
 
 
 // pengeluaran
 app.get('/pengeluaran', (req,res) => {
-    res.render('pengeluaran');
+    res.render('users/pengeluaran');
 });
 app.get('/pengeluaran/auth', verifyToken, (req, res) => {
     res.json({
@@ -82,10 +89,15 @@ app.get('/pengeluaran/auth', verifyToken, (req, res) => {
 });
 app.get('/pengeluaran/list', verifyToken, OperatorAruskas.listPengeluaran);
 app.post('/pengeluaran/tambah',  verifyToken,OperatorAruskas.addPengeluaran);
+app.get('/pengeluaran/edit/:id', OperatorAruskas.editPengeluaran);
+app.put('/pengeluaran/update/:id', verifyToken, OperatorAruskas.updatePengeluaran);
+app.delete('/pengeluaran/delete/:id', verifyToken, OperatorAruskas.deletePengeluaran);
+app.get('/pengeluaran/detail/:id', OperatorAruskas.detailPengeluaran);
+
 
 // produk
 app.get('/produk', (req,res) => {
-    res.render('produk');
+    res.render('users/produk');
 });
 app.get('/produk/auth', verifyToken, (req, res) => {
     res.json({
@@ -94,6 +106,10 @@ app.get('/produk/auth', verifyToken, (req, res) => {
     });
 });
 app.post('/produk/tambah', verifyToken, OperatorProduks.tambahProduk);
+app.get('/produk/edit/:id', OperatorProduks.editProduk);
+app.put('/produk/update/:id', verifyToken, OperatorProduks.updateProduk);
+app.delete('/produk/delete/:id', verifyToken, OperatorProduks.deleteProduk);
+app.get('/produk/detail/:id', OperatorProduks.detailProduk);
 app.get('/produk/list', verifyToken, OperatorProduks.getListProduk);
 
 app.listen(port, () => {

@@ -1,0 +1,94 @@
+/* Mengatur font dasar dan reset margin/padding */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5; /* Background abu-abu muda agar form terlihat menonjol */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Styling untuk container form (Card/Modal) */
+        .form-container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Bayangan halus */
+        }
+
+        /* Jarak antar elemen form */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        /* Styling Label */
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #333333;
+        }
+
+        /* Styling Input dan Select */
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #dcdfe6;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333333;
+            outline: none;
+            transition: border-color 0.2s ease-in-out;
+            background-color: #ffffff;
+        }
+
+        /* Warna teks placeholder */
+        .form-input::placeholder {
+            color: #a8abb2;
+        }
+
+        /* Efek ketika input di-klik (focus) */
+        .form-input:focus {
+            border-color: #55bcf9;
+            box-shadow: 0 0 0 2px rgba(85, 188, 249, 0.1);
+        }
+
+        /* Styling khusus untuk select agar panahnya serasi (opsional) */
+        select.form-input {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8abb2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        /* Styling Tombol Submit */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #55bcf9; /* Biru muda sesuai screenshot */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .btn-submit:hover {
+            background-color: #44a8e5; /* Biru yang sedikit lebih gelap saat di-hover */
+        }

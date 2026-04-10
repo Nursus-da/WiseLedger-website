@@ -1,0 +1,116 @@
+body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: #f5f7fa;
+            padding: 24px;
+        }
+
+        /* Container Tabel (Border melengkung & garis luar) */
+        .table-container {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden; /* Menjaga sudut melengkung tetap rapi */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        /* Styling Header Tabel */
+        .product-table thead th {
+            background-color: #f8fafc;
+            color: #0f172a;
+            font-weight: 600;
+            padding: 16px 20px;
+            font-size: 14px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* Styling Body Tabel */
+        .product-table tbody td {
+            padding: 16px 20px;
+            vertical-align: middle;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            font-size: 14px;
+        }
+
+        /* --- Layout Info Produk (Gambar & Teks) --- */
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .product-img {
+            width: 48px;
+            height: 48px;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+        }
+
+        .product-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .product-name {
+            font-weight: 500;
+            color: #0f172a;
+        }
+
+        /* --- Layout Tombol Aksi --- */
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .action-link {
+            text-decoration: underline;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .action-detail {
+            color: #5b21b6; /* Warna ungu gelap */
+        }
+
+        .action-edit {
+            color: #1d4ed8; /* Warna biru */
+        }
+
+        .action-delete {
+            background-color: #ffffff;
+            border: 1px solid #94a3b8;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #000000;
+            font-size: 13px;
+        }
+        
+        .action-delete:hover {
+            background-color: #f1f5f9;
+        }
+        
+        /* Ikon SVG di dalam aksi */
+        .actions svg {
+            width: 14px;
+            height: 14px;
+        }

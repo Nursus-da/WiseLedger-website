@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiseledger - Detail Produk</title>
+    <link rel="stylesheet" href="/css/detail/style.css">
+
+    
+</head>
+<body>
+    <div class="table-container">
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Nama Produk/Layanan</th>
+                    <th>Harga</th>
+                    <th>Biaya</th>
+                    <th>Stok</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="product-info">
+                            <div class="product-img"></div>
+                            <div class="product-text">
+                                <span class="product-category">Produk</span>
+                                <span class="product-name"><%= data.produk %></span>
+                            </div>
+                        </div>
+                    </td>
+                    
+                    <td><%= data.harga %></td>
+                    
+                    <td><%= data.biaya %></td> 
+                    
+                    <td><%= data.stok %></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="/produk">-> Kembali</a>
+</body>
+</html>

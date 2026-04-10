@@ -176,6 +176,153 @@ class OperatorAruskas {
         res.status(201).json({message: "berhasil menambahkan pendapatan"});
     }
 
+    static async editPendapatan (req, res) {
+
+        const id = req.params.id;
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        const data = await Aruskas.findByPk(id);
+
+        if(!data) return res.status(400).json({message: "produk tidak ditemukan"});
+
+        res.render('users/editPendapatan', {data: data});
+
+    }
+
+    static async updatePendapatan(req, res){
+        const body = req.body;
+        const id = req.params.id;
+        const userId = req.user.id;
+
+        console.log("...........",body);
+        console.log("...........",id);
+        console.log("...........",userId);
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        if (!body.inputTipe || !body.inputTanggal || !body.inputDeskripsi || !body.inputJumlah || !body.inputSimpanke) return res.status(400).json({message: "Input tidak boleh kosong"});
+
+        const updatePendapatan = await Aruskas.update(
+            {
+                tipe: body.inputTipe,
+                tanggal: body.inputTanggal,
+                deskripsi: body.inputDeskripsi,
+                jumlah: body.inputJumlah,
+                simpanke: body.inputSimpanke
+            },
+            {
+                where: {
+                    id: id
+                }
+            });
+
+        if(!updatePendapatan) return res.status(400).json({message: "gagal mengupdate pendapatan"});
+        res.status(201).json({message: "berhasil mengupdate pendapatan"});
+    }
+
+    static async deletePendapatan (req, res) {
+
+        const id = req.params.id;
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        const deletePendapatan = await Aruskas.destroy({
+            where: {
+                id: id
+            }
+        });
+
+        if(!deletePendapatan) return res.status(400).json({message: "gagal menghapus produk"});
+        res.status(200).json({message: "berhasil menghapus pendapatan"});
+
+    }
+    static async editPengeluaran (req, res) {
+
+        const id = req.params.id;
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        const data = await Aruskas.findByPk(id);
+
+        if(!data) return res.status(400).json({message: "data tidak ditemukan"});
+
+        res.render('users/editPengeluaran', {data: data});
+
+    }
+
+    static async updatePengeluaran(req, res){
+        const body = req.body;
+        const id = req.params.id;
+        const userId = req.user.id;
+
+        console.log("...........",body);
+        console.log("...........",id);
+        console.log("...........",userId);
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        if (!body.inputTipe || !body.inputTanggal || !body.inputDeskripsi || !body.inputJumlah || !body.inputSimpanke) return res.status(400).json({message: "Input tidak boleh kosong"});
+
+        const updatePengeluaran = await Aruskas.update(
+            {
+                tipe: body.inputTipe,
+                tanggal: body.inputTanggal,
+                deskripsi: body.inputDeskripsi,
+                jumlah: body.inputJumlah,
+                simpanke: body.inputSimpanke
+            },
+            {
+                where: {
+                    id: id
+                }
+            });
+
+        if(!updatePengeluaran) return res.status(400).json({message: "gagal mengupdate pengeluaran"});
+        res.status(201).json({message: "berhasil mengupdate pengeluaran"});
+    }
+
+    static async deletePengeluaran (req, res) {
+
+        const id = req.params.id;
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        const deletePengeluaran = await Aruskas.destroy({
+            where: {
+                id: id
+            }
+        });
+
+        if(!deletePengeluaran) return res.status(400).json({message: "gagal menghapus produk"});
+        res.status(200).json({message: 'Berhasil menghapus mengeluarkan'});
+
+    }
+    
+    static async detailPengeluaran (req, res) {
+        const id = req.params.id;
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        const data = await Aruskas.findByPk(id);
+
+        if(!data) return res.status(400).json({message: "produk tidak ditemukan"});
+        res.render('users/detailpengeluaran', {data: data});
+        
+    }
+
+    static async detailPendapatan (req, res) {
+        const id = req.params.id;
+
+        if (!id) return res.status(401).json({message: "unautorized"});
+
+        const data = await Aruskas.findByPk(id);
+
+        if(!data) return res.status(400).json({message: "produk tidak ditemukan"});
+        res.render('users/detailpendapatan', {data: data});
+        
+    }
+
 }
 
 module.exports = OperatorAruskas;

@@ -30,15 +30,16 @@ const panggilApiGetPendapatan = async (endpoint, options = {}) => {
                 output += `<td>${Number(item.jumlah).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</td>`;
                 output += 
                 `<td>
-                    <a href="/detailPendapatan/${item.id}"><i class="fa-solid fa-circle-info"></i> Detail</a>
-                    <a href="/editPendapatan/${item.id}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                    <form>
+                    <a href="/pendapatan/detail/${item.id}"><i class="fa-solid fa-circle-info"></i> Detail</a>
+                    <a href="/pendapatan/edit/${item.id}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                    <form class="formHapusPendapatan" data-id="${item.id}">
                         <button type="submit"><i class="fa-solid fa-trash"></i> Hapus</button>
                     </form>
                 </td>`;
                 output += "</tr>";
             });
             document.getElementById("get").innerHTML = output;
+            pasangListenerHapus();
             return data;
         }
 
