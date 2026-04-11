@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Keuangan</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-    
+
     <link rel="stylesheet" href="/dist/beranda.css">
 </head>
+
 <body>
 
     <aside class="sidebar">
-        <div class="logo-container">
-            <h1><span class="logo-1">LOG</span><span class="logo-2">O</span></h1>
+        <div class="logo-container"
+            style="display: flex; justify-content: center; align-items: center; padding: 5px 0;">
+            <img src="/assets/image/logo.png" alt="Logo" style="height: 85px; max-width: 100%; object-fit: contain;">
         </div>
-        
+
         <div class="menu-section">
             <a href="/beranda" class="menu-item active">
                 <i class="fa-solid fa-house"></i>
                 Beranda
             </a>
-            
+
             <div class="menu-label">Manajemen</div>
-            
+
             <a href="/arus-kas" class="menu-item">
                 <i class="fa-solid fa-money-bill-transfer"></i>
                 Arus Kas
@@ -50,7 +53,7 @@
         <header class="topbar">
             <div class="user-profile" id="userProfileBtn">
                 <i class="fa-regular fa-circle-user"></i>
-                
+
                 <div class="dropdown-menu" id="userDropdown">
                     <button type="button" class="dropdown-btn">
                         <i class="fa-solid fa-key"></i> Ubah Password
@@ -64,7 +67,7 @@
         </header>
 
         <div class="dashboard-body">
-            
+
             <div class="row-top">
                 <div class="card">
                     <h3 class="card-title">Inventaris</h3>
@@ -101,4 +104,5 @@
     <script src="/dist/beranda.js"></script>
 
 </body>
+
 </html>
