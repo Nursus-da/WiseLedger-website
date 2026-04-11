@@ -1,0 +1,22 @@
+export const udProduk = async (endpoint, options = {}) => {
+    
+    try {
+        //Lakukan Request ke backend
+        const response = await fetch(endpoint, {
+            ...options
+        })
+        
+        //Jika request berhasil
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            return data;
+        }
+
+    } catch (error) {
+        console.error("Error:", error);
+        localStorage.clear(); //Hapus token sampah jika error
+        window.location.href = '/login';
+    }
+
+}

@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+}
+
+.form-container {
+  background-color: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  box-shadow: 0 4px 20px #0000000d;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 13px;
+  display: block;
+}
+
+.form-input {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #dcdfe6;
+  border-radius: 8px;
+  outline: none;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: border-color .2s ease-in-out;
+}
+
+.form-input::placeholder {
+  color: #a8abb2;
+}
+
+.form-input:focus {
+  border-color: #55bcf9;
+  box-shadow: 0 0 0 2px #55bcf91a;
+}
+
+select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8abb2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-position: right 16px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.btn-submit {
+  color: #fff;
+  cursor: pointer;
+  background-color: #55bcf9;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color .2s ease-in-out;
+}
+
+.btn-submit:hover {
+  background-color: #44a8e5;
+}
+/*# sourceMappingURL=editpendapatan.css.map */

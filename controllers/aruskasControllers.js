@@ -1,5 +1,6 @@
 const { Aruskas } = require('../models');
 const { Op } = require('sequelize');
+const user = require('../models/user');
 
 class OperatorAruskas {
     
@@ -8,7 +9,7 @@ class OperatorAruskas {
         if (!req.user) return res.status(401).json({message: "unautorized"});
 
         // hitung total pendapatan bulan ini
-        const pendapatan = await Aruskas.sum('jumlah' , {
+        const pendapatanForLaba = await Aruskas.sum('jumlah' , {
             where: {
                 tipe: 'Pendapatan',
                 userId: req.user.id,
@@ -22,7 +23,7 @@ class OperatorAruskas {
         });
 
         // hitung total pengeluaran bulan ini
-        const pengeluaran = await Aruskas.sum('jumlah' , {
+        const pengeluaranForLaba = await Aruskas.sum('jumlah' , {
             where: {
                 tipe: 'Pengeluaran',
                 userId: req.user.id,
@@ -34,8 +35,32 @@ class OperatorAruskas {
             }
         });
 
+        const pendapatan = await Aruskas.sum('jumlah' , {
+            where: {
+                tipe: 'Pendapatan',
+                userId: req.user.id,
+                createdAt: {
+                    // hitung pendapatan bulan saat ini
+                    [Op.gte]: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+                    [Op.lt]: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1)
+                }
+            }
+        });
+
+        // hitung total pengeluaran bulan ini
+        const pengeluaran = await Aruskas.sum('jumlah' , {
+            where: {
+                tipe: 'Pengeluaran',
+                userId: req.user.id,
+                createdAt: {
+                    [Op.gte]: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+                    [Op.lt]: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1)
+                }
+            }
+        });
+
         // hitung laba bulan ini 
-        const labaBersih = pendapatan - pengeluaran;
+        const labaBersih = pendapatanForLaba - pengeluaranForLaba;
 
         // tampilkan semua arus kas
         const aruskas = await Aruskas.findAll({
@@ -85,12 +110,44 @@ class OperatorAruskas {
             }
         });
 
+        const bulanIni = new Date().getMonth(); // 0-11
+        const tahunIni = new Date().getFullYear();
+
+        // pendapatan bulan ini
+        const pendapatanBulanIni = await Aruskas.sum('jumlah', {
+            where: {
+                tipe: 'Pendapatan',
+                userId: req.user.id,
+                createdAt: {
+                    [Op.gte]: new Date(tahunIni, bulanIni, 1),
+                    [Op.lt]: new Date(tahunIni, bulanIni + 1, 1)
+                }
+            }
+        });
+
+        // pendapatan bulan lalu
+        const pendapatanBulanLalu = await Aruskas.sum('jumlah', {
+            where: {
+                tipe: 'Pendapatan',
+                userId: req.user.id,
+                createdAt: {
+                    [Op.gte]: new Date(tahunIni, bulanIni - 1, 1),
+                    [Op.lt]: new Date(tahunIni, bulanIni, 1)
+                }
+            }
+        });
+
+        // Hitung selisih
+        const selisihPendapatan = pendapatanBulanIni - pendapatanBulanLalu;
+        const selisihPendapatanConvert = selisihPendapatan === 0 ?  selisihPendapatan = 0 : selisihPendapatan;
+
 
 
         res.status(200).json({
             pendapatan: pendapatan,
             PendapatanBulanIni: PendapatanBulanIni || 0,
-            PendapatanTertinggi: PendapatanTertinggi
+            PendapatanTertinggi: PendapatanTertinggi,
+            selisihPendapatan: selisihPendapatanConvert 
         });
     }
 
@@ -106,6 +163,7 @@ class OperatorAruskas {
         });
 
         const PengeluaranBulanIni = await Aruskas.sum('jumlah', {
+            
             where: {
                 tipe: 'Pengeluaran',
                 userId: req.user.id,
@@ -129,10 +187,42 @@ class OperatorAruskas {
             }
         });
 
+        const bulanIni = new Date().getMonth(); // 0-11
+        const tahunIni = new Date().getFullYear();
+
+        // pendapatan bulan ini
+        const pengeluaranBulanIni = await Aruskas.sum('jumlah', {
+            where: {
+                tipe: 'Pengeluaran',
+                userId: req.user.id,
+                createdAt: {
+                    [Op.gte]: new Date(tahunIni, bulanIni, 1),
+                    [Op.lt]: new Date(tahunIni, bulanIni + 1, 1)
+                }
+            }
+        });
+
+        // pendapatan bulan lalu
+        const pengeluaranBulanLalu = await Aruskas.sum('jumlah', {
+            where: {
+                tipe: 'Pengeluaran',
+                userId: req.user.id,
+                createdAt: {
+                    [Op.gte]: new Date(tahunIni, bulanIni - 1, 1),
+                    [Op.lt]: new Date(tahunIni, bulanIni, 1)
+                }
+            }
+        });
+
+        // Hitung selisih
+        const selisihPengeluaran = pengeluaranBulanIni - pengeluaranBulanLalu;
+        const selisihPengeluaranConvert = selisihPengeluaran === 0? selisihPengeluaran = "0" : selisihPengeluaran;
+
         res.status(200).json({
             pengeluaran: pengeluaran,
-            PengeluaranBulanIni:PengeluaranBulanIni || 0,
-            PengeluaranTertinggi: PengeluaranTertinggi 
+            PengeluaranBulanIni:PengeluaranBulanIni || "0",
+            PengeluaranTertinggi: PengeluaranTertinggi,
+            selisihPengeluaran: selisihPengeluaranConvert 
         });
     }
     
