@@ -2,18 +2,15 @@
   "name": "wiseledger-website",
   "version": "1.0.0",
   "description": "Proyek ini berfokus pada pengembangan web application manajemen keuangan berbasis metode Kakeibo yang ditujukan untuk UMKM dan generasi muda. Sistem akan dirancang untuk membantu pengguna dalam melakukan perencanaan keuangan awal bulan, pencatatan transaksi harian, serta refleksi keuangan berkala secara terstruktur.",
- 
   "scripts": {
-  "dev": "parcel watch src/aruskas.js src/beranda.js src/editpendapatan.js src/editpengeluaran.js src/editproduk.js src/forDetail.js src/index.js src/login.js src/pendapatan.js src/pengeluaran.js src/produk.js src/register.js --dist-dir public/dist",
-  "build": "parcel build src/aruskas.js src/beranda.js src/editpendapatan.js src/editpengeluaran.js src/editproduk.js src/forDetail.js src/index.js src/login.js src/pendapatan.js src/pengeluaran.js src/produk.js src/register.js --dist-dir public/dist",
-  "start": "node app.js",
-  "dev:all": "concurrently \"npm run dev\" \"nodemon app.js\""
-},
-
-"targets": {
+    "dev": "parcel watch src/aruskas.js src/beranda.js src/editpendapatan.js src/editpengeluaran.js src/editproduk.js src/forDetail.js src/index.js src/login.js src/pendapatan.js src/pengeluaran.js src/produk.js src/register.js --dist-dir public/dist",
+    "build": "parcel build src/aruskas.js src/beranda.js src/editpendapatan.js src/editpengeluaran.js src/editproduk.js src/forDetail.js src/index.js src/login.js src/pendapatan.js src/pengeluaran.js src/produk.js src/register.js --dist-dir public/dist",
+    "start": "node app.js",
+    "dev:all": "concurrently \"npm run dev\" \"nodemon app.js\""
+  },
+  "targets": {
     "main": false
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -25,6 +22,8 @@
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "chart.js": "^4.5.1",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "dotenv": "^17.3.1",
     "ejs": "^5.0.1",
     "express": "^5.2.1",
