@@ -874,7 +874,7 @@ const panggilApiGetPengeluaran = async (endpoint, options = {})=>{
                 style: 'currency',
                 currency: 'IDR'
             })} </h2>`;
-            outputPengBulIni += `<p><span class="text-green">${Number(data.selisihPengeluaran).toLocaleString('id-ID', {
+            outputPengBulIni += `<p><span class="text-red">${Number(data.selisihPengeluaran).toLocaleString('id-ID', {
                 style: 'currency',
                 currency: 'IDR'
             })}</span> Rb lebih tinggi dibanding bulan lalu</p>`;

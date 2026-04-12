@@ -29,16 +29,18 @@ body {
   display: flex;
 }
 
-.header-top {
-  justify-content: space-between;
+.logo-container {
+  justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
+  padding: 30px 20px 20px;
   display: flex;
 }
 
-.logo {
-  letter-spacing: 1px;
-  font-size: 24px;
-  font-weight: bold;
+.sidebar-logo {
+  object-fit: contain;
+  width: 80px;
+  height: auto;
 }
 
 .back-link {

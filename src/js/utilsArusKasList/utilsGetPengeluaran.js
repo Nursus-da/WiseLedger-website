@@ -16,7 +16,7 @@ export const panggilApiGetPengeluaran = async (endpoint, options = {}) => {
 
             let outputPengBulIni = "<h4>Pengeluaran bulan ini</h4>";
             outputPengBulIni += `<h2>${Number(data.PengeluaranBulanIni).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })} </h2>`;
-            outputPengBulIni += `<p><span class="text-green">${Number(data.selisihPengeluaran).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</span> Rb lebih tinggi dibanding bulan lalu</p>`;
+            outputPengBulIni += `<p><span class="text-red">${Number(data.selisihPengeluaran).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</span> Rb lebih tinggi dibanding bulan lalu</p>`;
             document.getElementById("pengeluaran-bulan-ini").innerHTML = outputPengBulIni;
 
             let outputPengTertinggi = "<h4>Pengeluaran tertinggi</h4>";

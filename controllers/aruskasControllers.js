@@ -61,6 +61,10 @@ class OperatorAruskas {
 
         // hitung laba bulan ini 
         const labaBersih = pendapatanForLaba - pengeluaranForLaba;
+        const labaBersihConvert = labaBersih === 0 ? 0 : labaBersih;
+        const pendapatanConvert = pendapatan === 0 ? 0 : pendapatan;
+        const pengeluaranConvert = pengeluaran === 0 ? 0 : pengeluaran;
+
 
         // tampilkan semua arus kas
         const aruskas = await Aruskas.findAll({
@@ -68,9 +72,9 @@ class OperatorAruskas {
         });
 
         res.status(200).json({
-            labaBersih : labaBersih,
-            pendapatan : pendapatan,
-            pengeluaran : pengeluaran,
+            labaBersih : labaBersihConvert,
+            pendapatan : pendapatanConvert,
+            pengeluaran : pengeluaranConvert,
             arusKas : aruskas
         });
     }
@@ -86,7 +90,7 @@ class OperatorAruskas {
             }
         });
 
-        const PendapatanBulanIni = await Aruskas.sum('jumlah', {
+        const pendapatanBulanSekarang = await Aruskas.sum('jumlah', {
             where: {
                 tipe: 'Pendapatan',
                 userId: req.user.id,
@@ -98,7 +102,7 @@ class OperatorAruskas {
             }
         });
 
-        const PendapatanTertinggi = await Aruskas.max('jumlah', {
+        const pendapatanTertinggi = await Aruskas.max('jumlah', {
             where: {
                 tipe: 'Pendapatan',
                 userId: req.user.id,
@@ -137,16 +141,19 @@ class OperatorAruskas {
             }
         });
 
+        const pendapatanBulanSekarangConvert = pendapatanBulanSekarang === 0 ? 0 : pendapatanBulanSekarang;
+        const pendapatanTertinggiConvert = pendapatanTertinggi === 0 ? 0 : pendapatanTertinggi;
+
         // Hitung selisih
         const selisihPendapatan = pendapatanBulanIni - pendapatanBulanLalu;
-        const selisihPendapatanConvert = selisihPendapatan === 0 ?  selisihPendapatan = 0 : selisihPendapatan;
+        const selisihPendapatanConvert = selisihPendapatan === 0 ?  0 : selisihPendapatan;
 
 
 
         res.status(200).json({
             pendapatan: pendapatan,
-            PendapatanBulanIni: PendapatanBulanIni || 0,
-            PendapatanTertinggi: PendapatanTertinggi,
+            PendapatanBulanIni: pendapatanBulanSekarangConvert,
+            PendapatanTertinggi: pendapatanTertinggiConvert,
             selisihPendapatan: selisihPendapatanConvert 
         });
     }
@@ -162,7 +169,7 @@ class OperatorAruskas {
             }
         });
 
-        const PengeluaranBulanIni = await Aruskas.sum('jumlah', {
+        const pengeluaranBulanSekarang = await Aruskas.sum('jumlah', {
             
             where: {
                 tipe: 'Pengeluaran',
@@ -175,7 +182,7 @@ class OperatorAruskas {
             }
         });
 
-        const PengeluaranTertinggi = await Aruskas.max('jumlah', {
+        const pengeluaranTertinggi = await Aruskas.max('jumlah', {
             where: {
                 tipe: 'Pengeluaran',
                 userId: req.user.id,
@@ -214,14 +221,17 @@ class OperatorAruskas {
             }
         });
 
+        const pengeluaranBulanSekarangConvert = pengeluaranBulanSekarang === 0 ? 0 : pengeluaranBulanSekarang;
+        const pengeluaranTertinggiConvert = pengeluaranTertinggi === 0 ? 0 : pengeluaranTertinggi;
+
         // Hitung selisih
         const selisihPengeluaran = pengeluaranBulanIni - pengeluaranBulanLalu;
-        const selisihPengeluaranConvert = selisihPengeluaran === 0? selisihPengeluaran = "0" : selisihPengeluaran;
+        const selisihPengeluaranConvert = selisihPengeluaran === 0? 0 : selisihPengeluaran;
 
         res.status(200).json({
             pengeluaran: pengeluaran,
-            PengeluaranBulanIni:PengeluaranBulanIni || "0",
-            PengeluaranTertinggi: PengeluaranTertinggi,
+            PengeluaranBulanIni: pengeluaranBulanSekarangConvert,
+            PengeluaranTertinggi: pengeluaranTertinggiConvert,
             selisihPengeluaran: selisihPengeluaranConvert 
         });
     }

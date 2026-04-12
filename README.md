@@ -18,10 +18,11 @@ Proyek ini berfokus pada pengembangan web application manajemen keuangan berbasi
 
 ## Menjalankan
 
+1. `clone repository`
 1. `npm install`
 2. `Buat database dengan nama wiseledgar_db di mysql`
 3. `buka file config/config.json`
-4. `isi username, password, database, host, dan dialect dengan data yang sesuai`
+4. `isi username, password, database, host, dan dialect dengan data yang sesuai di bagian development`
 5. `lakukan konfigurasi denga menggunakan perintah 'npx sequelize-cli db:migrate'`
 6. `jalankan perintah 'npm run dev:all`
 3. Buka `http://localhost:3000`

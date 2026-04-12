@@ -25,13 +25,18 @@ body {
 }
 
 .logo-container {
-    padding: 0 24px;
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px 20px 20px; 
+    margin-bottom: 10px; 
+    
 }
 
-.logo-container h1 {
-    font-size: 24px;
-    font-weight: 700;
+.sidebar-logo {
+    width: 80px; 
+    height: auto;
+    object-fit: contain;
 }
 
 .logo-1 { color: #d4b84b; }
@@ -89,9 +94,8 @@ body {
     overflow-y: auto;
 }
 
-/* === Topbar === */
 .topbar {
-    height: 90px;
+    height: 90px; /* Diperbaiki dari "90" di kode pertama */
     background-color: #ffffff;
     display: flex;
     justify-content: flex-end;
@@ -99,7 +103,8 @@ body {
     padding: 15px 50px;
 }
 
-.user-profile i {
+/* user profile & dropdown */
+.user-profile {
     font-size: 30px;
     color: #111827;
     cursor: pointer;
@@ -182,6 +187,7 @@ body {
 }
 
 .text-green { color: #38a169; }
+.text-red { color: #ef4444; }
 .card a { color: #3b82f6; text-decoration: underline; }
 
 /* Table Section */

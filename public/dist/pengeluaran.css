@@ -23,13 +23,17 @@ body {
 }
 
 .logo-container {
-  margin-bottom: 30px;
-  padding: 0 24px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 30px 20px 20px;
+  display: flex;
 }
 
-.logo-container h1 {
-  font-size: 24px;
-  font-weight: 700;
+.sidebar-logo {
+  object-fit: contain;
+  width: 80px;
+  height: auto;
 }
 
 .logo-1 {
@@ -99,7 +103,7 @@ body {
   display: flex;
 }
 
-.user-profile i {
+.user-profile {
   color: #111827;
   cursor: pointer;
   font-size: 30px;
@@ -188,6 +192,10 @@ body {
 
 .text-green {
   color: #38a169;
+}
+
+.text-red {
+  color: #ef4444;
 }
 
 .card a {

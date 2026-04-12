@@ -1,5 +1,5 @@
-const { panggilApiForPlugin } = require('./utils');
-const { token } = require('../utilsAuth/getToken');
+const {panggilApiForPlugin} = require('./utils');
+const {token} = require('../utilsAuth/getToken');
 
 async function getData() {
     await panggilApiForPlugin('/beranda/data', {
@@ -12,6 +12,6 @@ async function getData() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     getData();
 });

@@ -96,12 +96,12 @@ class OperatorBeranda {
             });
 
             const keuntungan = pendapatan - pengeluaran;
-            const modal = pengeluaran;
+            const keuntunganConvert = keuntungan === 0 ? 0 : keuntungan;
         
             res.status(200).json({
                 dataInventaris : dataInventaris,
-                keuntungan : keuntungan,
-                modal : modal,
+                keuntungan : keuntunganConvert,
+                modal : pengeluaran || 0,
                 keuntunganBulanan: keuntunganBulanan
             });
         }
